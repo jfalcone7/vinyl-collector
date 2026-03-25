@@ -21,31 +21,9 @@ class DiscogsConnector {
         return DiscogsConnector.instance;
     }
 
-    async search(query: string) {
+    async search(query: {}) {
         return new Promise((resolve, reject) => {
             this.db.search(query, (err: any, data: any) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-            });
-        });
-    }
-    async searchArtists(artist: string) {
-        return new Promise((resolve, reject) => {
-            this.db.search({ artist: artist, format: 'Vinyl' }, (err: any, data: any) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(data);
-                }
-            });
-        });
-    }
-    async searchAlbums(album: string) {
-        return new Promise((resolve, reject) => {
-            this.db.search({ release_title: album }, (err: any, data: any) => {
                 if (err) {
                     reject(err);
                 } else {

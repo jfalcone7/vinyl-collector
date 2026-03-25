@@ -14,18 +14,8 @@ export async function POST(request: NextRequest) {
                 { status: 400 }
             );
         }
-
         const connector = DiscogsConnector.getInstance();
-
-        let results;
-        if (type === "artist") {
-            results = await connector.searchArtists(query);
-        } else if (type === "album") {
-            results = await connector.searchAlbums(query);
-        } else {
-            results = await connector.search(query);
-        }
-
+        const results = await connector.search(query);
         return NextResponse.json(results);
 
     } catch (error) {
