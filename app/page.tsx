@@ -1,0 +1,11 @@
+import Image from "next/image";
+import Search from "@/components/search";
+
+export default function Home() {
+  return (
+    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
+      <h1 className="text-3xl font-bold">Welcome to Vinyl Collector!</h1>
+      <Search />
+    </div>
+  );
+}
