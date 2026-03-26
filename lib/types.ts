@@ -3,6 +3,7 @@ export interface SearchQuery {
     artist?: string;
     release_title?: string;
     format?: string;
+    country?: string;
 }
 
 //individual search result returned by discogs API
