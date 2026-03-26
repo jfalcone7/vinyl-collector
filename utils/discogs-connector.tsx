@@ -1,5 +1,8 @@
 //this is purely a server-side utility, so we can use node modules and env variables without worrying about client-side bundling issues
-"use server"; 
+"use server";
+import { SearchResults } from "@/lib/types";
+
+ 
 class DiscogsConnector {
     private static instance: DiscogsConnector | null = null;
     private discogs: any;
@@ -21,7 +24,7 @@ class DiscogsConnector {
         return DiscogsConnector.instance;
     }
 
-    async search(query: {}) {
+    async search(query: {}) : Promise<SearchResults> {
         return new Promise((resolve, reject) => {
             this.db.search(query, (err: any, data: any) => {
                 if (err) {

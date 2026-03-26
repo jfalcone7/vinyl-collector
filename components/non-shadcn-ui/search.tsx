@@ -10,9 +10,9 @@ const Search = forwardRef<HTMLInputElement, { searchType: string }>(function Sea
 ) {
   return (
     <Field>
-      <FieldLabel htmlFor="input-button-group">Search for {searchType === 'artist' ? 'Artists' : 'Albums'}</FieldLabel>
+      <FieldLabel htmlFor="input-button-group">{searchType === 'artist' ? 'Artist' : 'Album Title'}</FieldLabel>
       <ButtonGroup>
-        <Input id="input-button-group" placeholder="Type to search..." />
+        <Input ref={ref} id="input-button-group" placeholder="Type to search..." />
       </ButtonGroup>
     </Field>
   );
