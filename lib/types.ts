@@ -6,8 +6,8 @@ export interface SearchQuery {
     country?: string;
 }
 
-//individual search result returned by discogs API
-export interface SearchResult {
+//an album returned by discogs API
+export interface Album {
     id: number;
     type: string;
     style: string[];
@@ -30,5 +30,5 @@ export interface SearchResults {
         items: number;
         urls: {};
     };
-    results: SearchResult[];
+    results: Album[];
 }
