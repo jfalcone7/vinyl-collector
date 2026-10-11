@@ -47,8 +47,8 @@ export default function SearchController({
     }
     return (
         <div className="w-full max-w-4xl flex flex-col gap-4">
-            <Search searchType="artist" ref={artistInputRef} />
-            <Search searchType="album" ref={albumInputRef} />
+            <Search searchType="artist" id="artistTextBox" ref={artistInputRef} />
+            <Search searchType="album" id="albumTextBox" ref={albumInputRef} />
             <NativeSelect ref={countrySelectRef}>
                 <NativeSelectOption value="">
                     Select release region
