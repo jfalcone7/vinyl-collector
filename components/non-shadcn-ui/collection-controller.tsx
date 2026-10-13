@@ -26,7 +26,7 @@ export default function CollectionController({
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full" id="collection">
             <h1 className="text-3xl font-bold mb-8 text-center">
                 My Collection
             </h1>
