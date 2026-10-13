@@ -52,7 +52,7 @@ export default function CollectionController({
                                         className="w-32 h-32"
                                     >
                                         <img
-                                            src={album.thumb || null}
+                                            src={album.thumb || ""}
                                             alt={album.title}
                                             className="object-cover rounded-md"
                                         />
