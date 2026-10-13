@@ -12,14 +12,16 @@ import { Button } from "@/components/ui/button";
 import { Album } from "@/lib/types";
 
 interface CollectionControllerProps {
-    collection: any[];
+    collection: Album[];
+    onRemoveFromCollection: (album: Album) => void;
 }
 
 export default function CollectionController({
     collection,
+    onRemoveFromCollection,
 }: CollectionControllerProps) {
     function removeFromCollection(album: Album) {
-        //todo
+        onRemoveFromCollection(album);
     }
     function clearCollection() {
         //todo

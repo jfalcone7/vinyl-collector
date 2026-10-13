@@ -41,6 +41,12 @@ export default function Home() {
         setCollection([...collection, album]);
     }
 
+    function handleRemoveFromCollection(album: Album) {
+        setCollection((currentCollection) =>
+            currentCollection.filter((record) => record.id !== album.id),
+        );
+    }
+
     if (isLoading) {
         return (
             <div className="flex h-screen items-center justify-center bg-zinc-50 dark:bg-black">
@@ -61,7 +67,10 @@ export default function Home() {
 
             {/* Right half - Collection */}
             <div className="flex-1 flex flex-col items-start justify-start overflow-y-auto p-8">
-                <CollectionController collection={collection} />
+                <CollectionController
+                    collection={collection}
+                    onRemoveFromCollection={handleRemoveFromCollection}
+                />
             </div>
         </div>
     );
