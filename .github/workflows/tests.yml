@@ -1,0 +1,46 @@
+name: Vercel Preview Robot Tests
+
+on:
+  deployment_status:
+
+jobs:
+  robot-tests:
+    # Only run if the deployment was successful
+    if: github.event.deployment_status.state == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Next.js Code
+        uses: actions/checkout@v4
+
+      - name: Checkout Remote Robot Framework Repository
+        uses: actions/checkout@v4
+        with:
+          repository: 'jfalcone7/vinyl_collector_robot_tests'
+          token: ${{ secrets.ROBOT_REPO_PAT }}
+          path: 'robot-tests'
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: 'pip'
+
+      - name: Install Robot Framework & Browser Library
+        run: |
+          pip install robotframework robotframework-browser robotframework-seleniumlibrary
+          rfbrowser init
+
+      - name: Run Robot Tests against Vercel URL
+        run: |
+          robot --variable BASE_URL:${{ github.event.deployment_status.target_url }} robot-tests/
+
+      - name: Upload Test Results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: robot-framework-results
+          path: |
+            report.html
+            log.html
+            output.xml
