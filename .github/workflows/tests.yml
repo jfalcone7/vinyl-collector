@@ -28,12 +28,12 @@ jobs:
 
       - name: Install Robot Framework & Browser Library
         run: |
-          pip install robotframework robotframework-browser robotframework-seleniumlibrary
+          pip install robotframework robotframework-browser robotframework-seleniumlibrary selenium
           rfbrowser init
 
       - name: Run Robot Tests against Vercel URL
         run: |
-          robot --variable BASE_URL:${{ github.event.deployment_status.target_url }} robot-tests/
+          robot --variable BASE_URL:${{ github.event.deployment_status.target_url }} --variable:${{ secrets.VERCEL_BYPASS_TOKEN }} robot-tests/
 
       - name: Upload Test Results
         if: always()
